@@ -4,20 +4,18 @@ def input():
 
     return sys.stdin.readline().rstrip()
 
-def dfs(curr_sequence,j,used):
+def dfs(curr_sequence,k,used):
 
     if len(curr_sequence) == M:
         print(*curr_sequence)
         return 0
 
-    for i in range(1,N+1):
-
-        if used[i] == False and i>j :
-            used[i] = True
-            curr_sequence.append(i)
-            dfs(curr_sequence,j,used)
-            used[i] = False
-            j = curr_sequence.pop()    
+    for i in range(k+1,N+1):
+            
+            if i not in curr_sequence:
+                curr_sequence.append(i)
+                dfs(curr_sequence,k,used)
+                k = curr_sequence.pop()    
         
 
 # main function
